@@ -1,0 +1,25 @@
+program alarm16F628;
+
+{ Declarations section }
+
+begin
+  { Main program }
+  TRISB := 1;
+  TRISA := 0;
+  PORTB := 0;
+  PORTA := 0;
+repeat
+      if PORTB.4 = 1 then // glavni prekidac
+      begin
+           if PORTB.3 = 0 then // otvorena vrata
+           begin
+                delay_ms(5000);
+                PORTA.2 := 1;
+           end;
+      end
+      else
+      begin
+           PORTA := 0;
+      end;
+until 1=2
+end.
